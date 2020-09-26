@@ -1,5 +1,8 @@
-import store from '../js/store.JS';
-import $ from '../../node_modules/jquery'
+// import * as $ from 'jquery';
+import $ from 'jquery';
+// import * as $ from './jquery';
+import store from './store';
+
 
 
 //Template Functions
@@ -120,8 +123,20 @@ function main() {
     addBookmark();
     generateInitial(); 
     render();
+    const startMsg = $('<p>Webpack is working!</p>');
+    $('main').append(startMsg);
   }
   
   $(main);
 
 
+// import $ from 'jquery';
+
+// function main() {
+//   console.log('DOM is loaded');
+
+//   const startMsg = $('<p>Webpack is working!</p>');
+//   $('main').append(startMsg);
+// }
+
+// $(main);
