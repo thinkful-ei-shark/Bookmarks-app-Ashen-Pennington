@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="src/css/style.css" media="screen"/>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Ashen's Quintessential Bookmark Holder</h1>
+        <div class="separator">(:τ」∠)</div>
+    </header>
+    <main>
+        <!--INITIAL VIEW-->
+        <div class="top-btns">
+            <button>+ New</button>
+            <select name="filter">
+                <option disabled selected>Filter By:</option>
+                <option value="1">1+ Stars</option>
+                <option value="2">2+ Stars</option>
+                <option value="3">3+ Stars</option>
+                <option value="4">4+ Stars</option>
+                <option value="5">5+ Stars</option>
+            </select>
+        </div>
+
+        <!--UNEXPANDED VIEW-->
+
+        <div class="list">
+            <li class="whole-container">
+                <div class="bookmark-head">
+                    <div class="bookmark-name">
+                        <p>Bookmark</p>
+                    </div>
+                    <div class="star-align">
+                        <img class="gold-star" src="src/media/shinesprite.gif">
+                        <img class="gold-star" src="src/media/shinesprite.gif">
+                        <img class="gold-star" src="src/media/shinesprite.gif">
+                        <img class="gold-star" src="src/media/shinesprite.gif">
+                        <img class="gold-star" src="src/media/shinesprite.gif">
+                    </div>
+                </div>
+            </li>
+        </div>
+
+        <!--EXPANDED VIEW-->
+
+        <div class="list">
+            <li class="whole-container">
+                <div class="bookmark-head">
+                    <div class="bookmark-name">
+                        <p>Bookmark</p>
+                    </div>
+                    <div class="star-align">
+                        <img class="gold-star" src="src/media/shinesprite.gif">
+                        <img class="gold-star" src="src/media/shinesprite.gif">
+                        <img class="gold-star" src="src/media/shinesprite.gif">
+                        <img class="gold-star" src="src/media/shinesprite.gif">
+                        <img class="gold-star" src="src/media/shinesprite.gif">
+                    </div>
+                </div>
+
+                <div class="bookmark-body">
+                    <div class="bookmark-body-top">
+                        <div class="visit-site">
+                            <button>Website</button>
+                        </div>
+                        <div class="manipulate">
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </div>
+                    </div>
+                    <div class="bookmark-body-bottom">
+                        <p>Description of Website Here</p>
+                    </div>
+                </div>
+                
+            </li>
+        </div>
+
+        <!--NEW BOOKMARK-->
+
+        <div>
+            <form>
+                <section class="add-top">
+                    <label>Add Bookmark</label>
+                    <input>
+                </section>
+                <section class="add-bottom">
+                    <div>
+                        <label>Title</label>
+                        <input>
+                    </div>
+                    <div>
+                        <div class="rating">
+                            <p>radio buttons</p>
+                        </div>
+                        <textarea>Descrition add here</textarea>
+                    </div>
+                </section>
+                <section class="add-buttons">
+                    <button>Cancel</button>
+                    <button>Add</button>
+                </section>
+            </form>
+        </div>
+    </main>
+<script>
+    const apiUrl='https://thinkful-list-api.herokuapp.com/ashen/bookmarks'
+
+// GET items from API
+function getBookmarkData(){
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data)=> console.log(data));
+};
+// POST items to API
+function createItem(title, url, desc, rating) {
+    let newBk = {
+        title: 'title',
+        url: 'url',
+        desc: 'desc',
+        rating: 'rating'
+}; 
+
+    newBk = JSON.stringify(newBk)
+
+    return fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: newBk
+    })
+    .then((response) => response.json())
+    .then((data => console.log(data)));
+}
+console.log(getBookmarkData())
+console.log(createItem())
+</script>
+</body>
+</html>

@@ -1,2 +1,2 @@
-# Bookmarks-app-Ashen-Pennington
-Bookmarks App
+# Bookmarks-App
+Bookmarks Project
