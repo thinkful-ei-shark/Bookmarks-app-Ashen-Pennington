@@ -8,7 +8,7 @@ import store from './store';
 //Template Functions
 function generateInitial() {
     let template = `    <div class="top-btns">
-    <button>+ New</button>
+    <button class="new">+ New</button>
     <select name="filter">
         <option disabled selected>Filter By:</option>
         <option value="1">1+ Stars</option>
@@ -107,12 +107,13 @@ function generateAddBookmark(){
 
 //Event Handlers Functions
 
-function addBookmark(item) {
-    store.bookmarks.push({
-      displayName: item,
-      checkedOff: false
+function addBookmark(){
+    $('main').on('click', '.new', function(event){
+      event.preventDefault();
+      render(generateAddBookmark());
     });
-  }
+}
+
 
 //Render Function
 function render(html) {
